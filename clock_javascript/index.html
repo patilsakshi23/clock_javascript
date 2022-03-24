@@ -1,0 +1,47 @@
+<!doctype html>
+<html> 
+<head>
+<meta charset="utf-8">
+<title>Light Mode Toggle | JavaScript Clock UI Dark</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="clock">
+   <div class="hour">
+     <div class="hr" id="hr"></div>
+     </div>
+   <div class="min">
+     <div class="mn" id="mn"></div>
+     </div>
+   <div class="sec">
+     <div class="sc" id="sc"></div>
+     </div>
+ </div> 
+ 
+ <div class="toggleClass" onclick="toggleClass()"></div>
+ <script type="text/javascript">
+function toggleClass()
+{
+const body = document.querySelector('body');
+body.classList.toggle('light');
+}
+
+/* to set current timing of device to both clocks*/
+ const deg = 6;
+ const hr = document.querySelector("#hr");/*select the first element that matches a specified selector*/
+ const mn = document.querySelector("#mn");
+ const sc = document.querySelector("#sc");
+ setInterval(() => {/*evaluates an expression at specified interval(in milliseconds)*/
+ let day = new Date();/* to get hour,min,sec*/
+ let hh = day.getHours()* 30;
+ let mm = day.getMinutes()* deg;
+ let ss = day.getSeconds()* deg;
+ hr.style.transform = `rotate(${(hh)+(mm/12)}deg)`;
+ mn.style.transform = `rotate(${mm}deg)`;
+ sc.style.transform = `rotate(${ss}deg)`;  
+ })
+
+ </script>
+ </body>
+ </html>
